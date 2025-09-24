@@ -1,0 +1,18 @@
+# OS-generated files
+Thumbs.db
+Desktop.ini
+
+# Editor/IDE
+.vscode/
+*.code-workspace
+
+# Logs
+*.log
+
+# Node/yarn (not used, but harmless to ignore)
+node_modules/
+yarn.lock
+package-lock.json
+
+# Mac (if synced via other machines)
+.DS_Store
