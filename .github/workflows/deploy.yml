@@ -16,6 +16,8 @@ concurrency:
 
 jobs:
   deploy:
+    # Only deploy Pages when the repository is public
+    if: ${{ !github.event.repository.private }}
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}

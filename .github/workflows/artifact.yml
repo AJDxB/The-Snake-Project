@@ -1,0 +1,29 @@
+name: Build site artifact (private)
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  package:
+    # Only run when the repository is private
+    if: ${{ github.event.repository.private }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Tar static site
+        run: |
+          tar -czf site.tar.gz .
+
+      - name: Upload site artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: site
+          path: site.tar.gz
+          retention-days: 7
